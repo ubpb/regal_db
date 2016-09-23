@@ -6,5 +6,6 @@
   = f.input :width
   = f.input :no_of_levels
 
-  => f.submit "Regalsegment anlegen", class: "btn btn-primary"
+  => f.submit "Speichern", class: "btn btn-primary"
+  => f.submit "Speichern + Neu", name: :save_and_new, class: "btn btn-primary"
   = link_to "Abbrechen", admin_shelf_segments_path(@shelf), class: "btn btn-default"

@@ -26,7 +26,12 @@ class Admin::SegmentsController < Admin::ApplicationController
     @segment = @shelf.segments.new(segment_params)
     if @segment.save
       flash[:success] = "Regalsegment erfolgreich angelegt"
-      redirect_to(admin_shelf_segments_path(@shelf))
+
+      if params[:save_and_new].present?
+        redirect_to(new_admin_shelf_segment_path(@shelf))
+      else
+        redirect_to(admin_shelf_segments_path(@shelf))
+      end
     else
       render(:new)
     end

@@ -1,4 +1,4 @@
-lock "3.6"
+lock "~> 3.6"
 
 set :application, "shelf_finder"
 set :repo_url,    "git@github.com:ubpb/shelf_finder.git"
