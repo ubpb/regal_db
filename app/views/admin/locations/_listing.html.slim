@@ -1,0 +1,3 @@
+.locations
+  - @locations.each do |location|
+    = link_to location.identifier, admin_location_shelves_path(location), class: "location"

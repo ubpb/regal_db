@@ -1,0 +1,8 @@
+.shelves {
+  .shelf {
+    display: block;
+    background-color: $gray-lighter;
+    padding: ($line-height-computed / 2) ($line-height-computed);
+    margin-bottom: $line-height-computed / 2;
+  }
+}

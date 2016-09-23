@@ -1,0 +1,16 @@
+h1 = "Regale für Standort '#{@location.identifier}'"
+
+p
+  => link_to admin_locations_path, class: "btn btn-default" do
+    => fa_icon("reply")
+    = "Zurück"
+
+  = link_to new_admin_location_shelf_path(@location), class: "btn btn-primary" do
+    => fa_icon("plus")
+    = "Neues Regal anlegen"
+
+- if @shelves.present?
+  = render "listing"
+- else
+  .alert.alert-info
+    ' Keine Regale vorhanden

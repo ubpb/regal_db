@@ -1,0 +1,14 @@
+h1 Regal finden
+
+= simple_form_for :search, url: admin_shelf_finder_path, method: :get do |f|
+  = f.input :q, label: false, placeholder: "Suche nach...", input_html: {value: @search_string}
+  = f.submit "Suchen", class: "btn btn-primary"
+
+- if @search_string.present?
+  h3 Sie finden das gesuchte Medium in den folgenden Regalbereichen
+  - if @result.present?
+    .alert.alert-success = simple_format(@result.to_s)
+    = render "map"
+  - else
+    .alert.alert-danger = "Leider kein Standort gefunden"
+

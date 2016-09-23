@@ -1,0 +1,10 @@
+= simple_form_for [:admin, @shelf, @segment] do |f|
+  = f.input :identifier
+  = f.input :interval_begin
+  = f.input :interval_end
+  = f.input :utilisation
+  = f.input :width
+  = f.input :no_of_levels
+
+  => f.submit "Regalsegment anlegen", class: "btn btn-primary"
+  = link_to "Abbrechen", admin_shelf_segments_path(@shelf), class: "btn btn-default"

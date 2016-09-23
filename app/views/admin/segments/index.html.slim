@@ -1,0 +1,16 @@
+h1 = "Segmente für Regal '#{@shelf.identifier}' für Standort '#{@shelf.location.identifier}'"
+
+p
+  => link_to admin_location_shelves_path(@location), class: "btn btn-default" do
+    => fa_icon("reply")
+    = "Zurück"
+
+  = link_to new_admin_shelf_segment_path(@shelf), class: "btn btn-primary" do
+    => fa_icon("plus")
+    = "Neues Regalsegment anlegen"
+
+- if @segments.present?
+  = render "listing"
+- else
+  .alert.alert-info
+    ' Keine Regalsegmente vorhanden

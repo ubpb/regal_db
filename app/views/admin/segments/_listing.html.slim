@@ -1,0 +1,5 @@
+.segments
+  - @segments.each do |segment|
+    .segment
+      => segment.identifier
+      = "#{segment.interval_begin} – #{segment.interval_end}"

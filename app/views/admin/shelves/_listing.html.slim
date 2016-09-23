@@ -1,0 +1,6 @@
+.shelves
+  - @shelves.each do |shelf|
+    .shelf
+      = link_to shelf.identifier, admin_shelf_segments_path(shelf)
+      - if shelf.segments.present?
+        =< "#{shelf.interval_begin} - #{shelf.interval_end}"
