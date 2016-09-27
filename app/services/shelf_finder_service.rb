@@ -51,17 +51,37 @@ class ShelfFinderService
 
 private
 
-  def normalize_code(code, pad: "0")
-    code.ljust(15, pad).upcase
+  def normalize_code(code)
+    norm_code = code[/[a-z]{3,4}/i] || code
+    norm_code&.upcase
   end
 
   def find_segments(code)
-    Segment.includes(
+    segments = Segment.includes(
       :shelf => :location
     ).where(
-      "interval_begin_computed <= :code AND interval_end_computed >= :code",
-      code: normalize_code(code, pad: "0")
+      "interval_begin <= :code AND interval_end >= :code",
+      code: normalize_code(code)
     )
+
+    segments
   end
+
+  # def normalize_code(code, pad: "0")
+  #   code.ljust(15, pad).upcase
+  # end
+
+  # def find_segments(code)
+  #   segments = Segment.includes(
+  #     :shelf => :location
+  #   ).where(
+  #     "interval_begin_computed <= :code AND interval_end_computed >= :code",
+  #     code: normalize_code(code, pad: "0")
+  #   )
+
+  #   binding.pry
+
+  #   segments
+  # end
 
 end
