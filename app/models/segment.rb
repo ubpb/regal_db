@@ -31,7 +31,7 @@ class Segment < ApplicationRecord
 
 
   def map_id
-    "#segment-#{shelf.location.identifier}-#{shelf.identifier}-#{identifier}"
+    "#r#{shelf.identifier}s#{identifier}"
   end
 
   def to_s
