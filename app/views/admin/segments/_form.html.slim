@@ -8,9 +8,9 @@
   = f.input :utilisation
   .row
     .col-sm-6
-      = f.input :width
+      = f.input :width, collection: [50, 60, 100, 120]
     .col-sm-6
-      = f.input :no_of_levels
+      = f.input :no_of_levels, collection: 1..10
 
   => f.submit "Speichern + Neu", name: :save_and_new, class: "btn btn-primary"
   => f.submit "Speichern + Zurück", class: "btn btn-default"
