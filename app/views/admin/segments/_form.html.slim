@@ -12,9 +12,12 @@
     .col-sm-6
       = f.input :no_of_levels, collection: 1..10
 
-  => f.submit "Speichern + Neu", name: :save_and_new, class: "btn btn-primary"
-  => f.submit "Speichern + Zurück", class: "btn btn-default"
-  = link_to "Abbrechen", admin_shelf_segments_path(@shelf), class: "btn btn-link"
+  - if @segment.new_record?
+    => f.submit "Speichern + Neu", name: :save_and_new, class: "btn btn-primary"
+    => f.submit "Speichern + Zurück", class: "btn btn-default"
+  - else
+    => f.submit "Speichern", class: "btn btn-primary"
+  = link_to "Abbrechen", admin_shelf_segments_path(@segment.shelf), class: "btn btn-link"
 
 javascript:
   $(function() {

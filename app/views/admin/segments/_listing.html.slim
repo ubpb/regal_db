@@ -1,5 +1,8 @@
-.segments
+table.table.table-striped.table-index-listing
   - @segments.each do |segment|
-    .segment
-      => segment.identifier
-      = "#{segment.interval_begin} – #{segment.interval_end}"
+    tr
+      td = segment.identifier
+      td = "#{segment.interval_begin} – #{segment.interval_end}"
+      td.actions
+        = link_to edit_admin_segment_path(segment), class: "btn btn-default" do
+          = fa_icon("pencil")
