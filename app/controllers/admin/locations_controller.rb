@@ -18,6 +18,20 @@ class Admin::LocationsController < Admin::ApplicationController
     end
   end
 
+  def edit
+    @location = Location.find(params[:id])
+  end
+
+  def update
+    @location = Location.find(params[:id])
+    if @location.update_attributes(location_params)
+      flash[:success] = "Standort erfolgreich aktualisiert"
+      redirect_to(admin_locations_path)
+    else
+      render(:edit)
+    end
+  end
+
 private
 
   def location_params

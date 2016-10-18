@@ -1,3 +1,10 @@
-.locations
+table.table.table-striped.table-index-listing
   - @locations.each do |location|
-    = link_to location.identifier, admin_location_shelves_path(location), class: "location"
+    tr
+      td = location.identifier
+      td.actions
+        => link_to admin_location_shelves_path(location), class: "btn btn-default" do
+          = "Regale"
+        = link_to edit_admin_location_path(location), class: "btn btn-default" do
+          = fa_icon("pencil")
+
