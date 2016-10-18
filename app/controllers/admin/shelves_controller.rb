@@ -24,6 +24,20 @@ class Admin::ShelvesController < Admin::ApplicationController
     end
   end
 
+  def edit
+    @shelf = Shelf.includes(:location).find(params[:id])
+  end
+
+  def update
+    @shelf = Shelf.includes(:location).find(params[:id])
+    if @shelf.update_attributes(shelf_params)
+      flash[:success] = "Regal erfolgreich aktualisiert"
+      redirect_to(admin_location_shelves_path(@shelf.location))
+    else
+      render(:edit)
+    end
+  end
+
 private
 
   def load_location

@@ -1,5 +1,5 @@
 = simple_form_for [:admin, @location, @shelf] do |f|
   = f.input :identifier
 
-  => f.submit "Regal anlegen", class: "btn btn-primary"
-  = link_to "Abbrechen", admin_location_shelves_path(@location), class: "btn btn-default"
+  => f.submit "Speichern", class: "btn btn-primary"
+  = link_to "Abbrechen", admin_location_shelves_path(@shelf.location), class: "btn btn-default"

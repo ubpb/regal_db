@@ -1,6 +1,10 @@
-.shelves
+table.table.table-striped.table-index-listing
   - @shelves.each do |shelf|
-    .shelf
-      = link_to shelf.identifier, admin_shelf_segments_path(shelf)
-      - if shelf.segments.present?
-        =< "#{shelf.interval_begin} - #{shelf.interval_end}"
+    tr
+      td = shelf.identifier
+      td = shelf.segments.present? ? "#{shelf.interval_begin} - #{shelf.interval_end}" : "–"
+      td.actions
+        => link_to admin_shelf_segments_path(shelf), class: "btn btn-default" do
+          = "Regalsegmente"
+        = link_to edit_admin_shelf_path(shelf), class: "btn btn-default" do
+          = fa_icon("pencil")
