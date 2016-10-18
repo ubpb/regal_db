@@ -1,0 +1,14 @@
+.slider {
+
+  display: block;
+
+  &.slider-horizontal {
+    width: 100%;
+
+    .slider-tick-label-container {
+      margin-top: 0;
+      padding-top: 20px;
+    }
+  }
+
+}
