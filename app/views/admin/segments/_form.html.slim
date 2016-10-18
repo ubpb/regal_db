@@ -1,10 +1,16 @@
 = simple_form_for [:admin, @shelf, @segment] do |f|
   = f.input :identifier
-  = f.input :interval_begin
-  = f.input :interval_end
+  .row
+    .col-sm-6
+      = f.input :interval_begin
+    .col-sm-6
+      = f.input :interval_end
   = f.input :utilisation
-  = f.input :width
-  = f.input :no_of_levels
+  .row
+    .col-sm-6
+      = f.input :width
+    .col-sm-6
+      = f.input :no_of_levels
 
   => f.submit "Speichern + Neu", name: :save_and_new, class: "btn btn-primary"
   => f.submit "Speichern + Zurück", class: "btn btn-default"
