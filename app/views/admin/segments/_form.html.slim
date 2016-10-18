@@ -2,7 +2,7 @@
   = f.input :identifier
   .row
     .col-sm-6
-      = f.input :interval_begin
+      = f.input :interval_begin, autofocus: true
     .col-sm-6
       = f.input :interval_end
   = f.input :utilisation
@@ -26,6 +26,7 @@ javascript:
       min: 0,
       max: 1,
       step: 0.05,
+      tooltip: "always",
       formatter: function(value) {
         return Math.round(value * 100) + "%";
       }
