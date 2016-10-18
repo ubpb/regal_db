@@ -1,0 +1,11 @@
+table.table {
+  &.table-index-listing {
+    td {
+      vertical-align: middle;
+    }
+  }
+
+  td.actions {
+    text-align: right;
+  }
+}
