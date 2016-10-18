@@ -6,6 +6,19 @@
   = f.input :width
   = f.input :no_of_levels
 
-  => f.submit "Speichern", class: "btn btn-primary"
   => f.submit "Speichern + Neu", name: :save_and_new, class: "btn btn-primary"
-  = link_to "Abbrechen", admin_shelf_segments_path(@shelf), class: "btn btn-default"
+  => f.submit "Speichern + Zurück", class: "btn btn-default"
+  = link_to "Abbrechen", admin_shelf_segments_path(@shelf), class: "btn btn-link"
+
+javascript:
+  $(function() {
+    $("#segment_utilisation").slider({
+      value: #{@segment.utilisation},
+      min: 0,
+      max: 1,
+      step: 0.05,
+      formatter: function(value) {
+        return Math.round(value * 100) + "%";
+      }
+    });
+  });
