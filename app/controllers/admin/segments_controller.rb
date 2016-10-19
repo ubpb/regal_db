@@ -12,12 +12,14 @@ class Admin::SegmentsController < Admin::ApplicationController
     previous_shelf = @shelf.location.shelves.where("identifier < ?", @shelf.identifier).last
 
     last_identifier   = @shelf.segments.last&.identifier || 0
-    last_no_of_levels = @shelf.segments.last&.no_of_levels || previous_shelf.segments.last&.no_of_levels || 0
+    last_interval_end = @shelf.segments.last&.interval_end || previous_shelf&.segments&.last&.interval_end
+    last_no_of_levels = @shelf.segments.last&.no_of_levels || previous_shelf&.segments&.last&.no_of_levels || 0
     last_width        = @shelf.segments.last&.width || 100
     last_utilisation  = @shelf.segments.last&.utilisation || 1
 
     @segment = @shelf.segments.new(
       identifier: last_identifier + 1,
+      interval_begin: last_interval_end,
       no_of_levels: last_no_of_levels,
       width: last_width,
       utilisation: last_utilisation
