@@ -1,0 +1,10 @@
+de:
+  simple_form:
+    labels:
+      defaults:
+        identifier: "ID"
+        interval_begin: "Systemstelle (oben links)"
+        interval_end: "Systemstelle (unten rechts)"
+        utilisation: "Belegung des Regals in %"
+        width: "Breite"
+        no_of_levels: "Anzahl Regalböden"
