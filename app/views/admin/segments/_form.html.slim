@@ -21,6 +21,10 @@
 
 javascript:
   $(function() {
+    $("input:text").focus(function() {
+      $(this).select();
+    });
+
     $("#segment_utilisation").slider({
       value: #{@segment.utilisation},
       min: 0,
