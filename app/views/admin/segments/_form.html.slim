@@ -21,8 +21,8 @@
 
 javascript:
   $(function() {
-    $("input:text").focus(function() {
-      $(this).select();
+    $("input:text").mouseup(function() {
+      $(this)[0].setSelectionRange(0, 9999);
     });
 
     $("#segment_utilisation").slider({
