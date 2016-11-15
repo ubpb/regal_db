@@ -25,6 +25,13 @@ javascript:
       $(this)[0].setSelectionRange(0, 9999);
     });
 
+    $("#segment_interval_begin").focusout(function() {
+      var str = $("#segment_interval_end").val();
+      if (!str || 0 === str.length) {
+        $("#segment_interval_end").val($(this).val());
+      }
+    });
+
     $("#segment_utilisation").slider({
       value: #{@segment.utilisation},
       min: 0,
