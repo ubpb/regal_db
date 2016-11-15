@@ -55,6 +55,13 @@ class Admin::SegmentsController < Admin::ApplicationController
     end
   end
 
+  def destroy
+    @segment = Segment.includes(:shelf).find(params[:id])
+    @segment.destroy
+    flash[:success] = "Regalsegment #{@segment.identifier} wurde gelöscht"
+    redirect_to(admin_shelf_segments_path(@segment.shelf))
+  end
+
 private
 
   def load_shelf
