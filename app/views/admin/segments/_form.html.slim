@@ -8,9 +8,9 @@
   = f.input :utilisation
   .row
     .col-sm-6
-      = f.input :width, collection: [50, 60, 100, 120]
+      = f.input :width, collection: Segment::SHELF_WIDTHS
     .col-sm-6
-      = f.input :no_of_levels, collection: 1..10
+      = f.input :no_of_levels, collection: Segment::NO_OF_LEVELS
 
   - if @segment.new_record?
     => f.submit "Speichern + Neu", name: :save_and_new, class: "btn btn-primary"
