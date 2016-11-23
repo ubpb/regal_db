@@ -1,6 +1,6 @@
 class Segment < ApplicationRecord
 
-  SHELF_WIDTHS = [50, 75, 100, 120]
+  SHELF_WIDTHS = [50, 75, 90, 100, 120]
   NO_OF_LEVELS = 1..10
 
   belongs_to :shelf
