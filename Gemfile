@@ -7,7 +7,7 @@ gem "coffee-rails",          "~> 4.2"
 gem "font-awesome-rails",    "~> 4.6"
 gem "jbuilder",              "~> 2.5"
 gem "jquery-rails",          "~> 4.2.1"
-gem "pg",                    "~> 0.18"
+gem 'mysql2',                '>= 0.3.18', '< 0.5'
 gem "puma",                  "~> 3.0"
 gem "rails",                 "~> 5.0.0"
 gem "rails-i18n",            "~> 5.0.0"
