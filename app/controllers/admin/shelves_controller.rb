@@ -4,7 +4,7 @@ class Admin::ShelvesController < Admin::ApplicationController
 
 
   def index
-    @shelves = @location.shelves
+    @shelves = @location.shelves.includes(:segments)
   end
 
   def new
