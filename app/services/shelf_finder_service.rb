@@ -57,31 +57,12 @@ private
   end
 
   def find_segments(code)
-    segments = Segment.includes(
+    Segment.includes(
       :shelf => :location
     ).where(
       "interval_begin <= :code AND interval_end >= :code",
       code: normalize_code(code)
     )
-
-    segments
   end
-
-  # def normalize_code(code, pad: "0")
-  #   code.ljust(15, pad).upcase
-  # end
-
-  # def find_segments(code)
-  #   segments = Segment.includes(
-  #     :shelf => :location
-  #   ).where(
-  #     "interval_begin_computed <= :code AND interval_end_computed >= :code",
-  #     code: normalize_code(code, pad: "0")
-  #   )
-
-  #   binding.pry
-
-  #   segments
-  # end
 
 end
