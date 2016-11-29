@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     root to: redirect("/admin/locations")
   end
 
+  namespace :api do
+    get "/exports/csv", to: "exports#csv", defaults: {format: :txt}
+  end
+
   root to: redirect("/admin")
 
 end
