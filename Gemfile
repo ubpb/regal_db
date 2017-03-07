@@ -8,6 +8,7 @@ gem "coffee-rails",          "~> 4.2"
 gem "font-awesome-rails",    "~> 4.6"
 gem "jbuilder",              "~> 2.5"
 gem "jquery-rails",          "~> 4.2.1"
+gem "mysql2",                ">= 0.3.18", "< 0.5"
 gem "puma",                  "~> 3.0"
 gem "rails",                 "~> 5.0.0"
 gem "rails-i18n",            "~> 5.0.0"
@@ -16,7 +17,7 @@ gem "simple_form",           "~> 3.3.1"
 gem "slim",                  "~> 3.0.7"
 gem "turbolinks",            "~> 5.0"
 gem "uglifier",              ">= 1.3.0"
-gem 'mysql2',                '>= 0.3.18', '< 0.5'
+gem "virtus",                "~> 1.0.5"
 
 group :development, :test do
   gem "pry-byebug", "~> 3.4", platform: :mri

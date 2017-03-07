@@ -14,4 +14,13 @@ nav.navbar.navbar-default role="navigation"
           a href="/admin/locations" Bestände verwalten
         li
           a href="/admin/shelf-finder" Regal finden
+        li.dropdown
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports <span class="caret"></span></a>
+          ul.dropdown-menu
+            li
+              = link_to "Regalreihen", admin_reports_regalreihen_index_path
+            li
+              = link_to "Systemstellen", admin_reports_systemstellen_index_path
+
+
 

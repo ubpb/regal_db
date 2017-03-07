@@ -7,6 +7,11 @@ Rails.application.routes.draw do
       end
     end
 
+    namespace :reports do
+      resources :regalreihen, only: [:index, :create]
+      resources :systemstellen, only: [:index, :create]
+    end
+
     get "shelf-finder", to: "shelf_finder#index", as: :shelf_finder
 
     root to: redirect("/admin/locations")

@@ -41,4 +41,13 @@ class Segment < ApplicationRecord
     "Ebene #{shelf.location.identifier}: Regal #{shelf.identifier}, Segment #{identifier}"
   end
 
+
+  def total_width
+    no_of_levels * width
+  end
+
+  def utilized_width
+    total_width * utilisation
+  end
+
 end

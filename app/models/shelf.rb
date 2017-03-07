@@ -23,4 +23,12 @@ class Shelf < ApplicationRecord
     end
   end
 
+  def total_width
+    segments.map(&:total_width).sum
+  end
+
+  def utilized_width
+    segments.map(&:utilized_width).sum
+  end
+
 end

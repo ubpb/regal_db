@@ -1,0 +1,41 @@
+h1 Report: Regalreihen
+
+= simple_form_for @form, url: admin_reports_regalreihen_index_path, as: :form do |f|
+  .row
+    .col-md-4
+      = f.input :location_id
+    .col-md-4
+      = f.input :start_row
+    .col-md-4
+      = f.input :end_row
+  = f.submit "Report", class: "btn btn-default"
+
+- if @shelves
+  h2 Ergebnisse
+
+  table.table.table-striped
+    tr
+      th Reihe
+      th Bereich
+      th Anzahl Segmente
+      th Regalmeter (vorhanden)
+      th Regalmeter (genutzt)
+      th Auslastung
+
+    - @shelves.each do |shelf|
+      tr
+        td = shelf.identifier
+        td = "#{shelf.interval_begin} – #{shelf.interval_end}"
+        td = shelf.segments.count
+        td = "#{(shelf.total_width / 100).round(2)} m"
+        td = "#{(shelf.utilized_width / 100).round(2)} m"
+        td = "#{(shelf.utilized_width / shelf.total_width * 100).round(2)} %"
+
+    tr
+      th
+      th
+      th = @shelves.map{|shelf| shelf.segments.count}.sum
+      th = "#{(@shelves.map{|shelf| shelf.total_width}.sum / 100).round(2)} m"
+      th = "#{(@shelves.map{|shelf| shelf.utilized_width}.sum / 100).round(2)} m"
+      th = "#{(@shelves.map{|shelf| shelf.utilized_width}.sum / @shelves.map{|shelf| shelf.total_width}.sum * 100).round(2)} %"
+
