@@ -12,7 +12,12 @@ html
     = javascript_include_tag("admin/application", "data-turbolinks-track" => true)
 
   body
-    .container
-      = render "layouts/admin/main_nav"
-      = render "layouts/admin/flash"
-      = yield
+    = render "layouts/admin/main_nav"
+
+    main
+      .container
+        #global-flash
+          = render "layouts/admin/flash"
+        = yield
+
+    = render "layouts/admin/footer"

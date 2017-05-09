@@ -1,7 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Roboto:300,400,400i,700');
+
+$font-family-sans-serif: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$brand-primary: darken(#428bca, 6.5%);
+$border-radius-base: 0;
+$navbar-default-bg: $brand-primary;
+$navbar-default-color: #fff;
+$navbar-default-link-color: $navbar-default-color;
+$navbar-default-link-hover-color: darken($navbar-default-color, 10%);
+$navbar-default-link-active-color: $navbar-default-link-color;
+$gray-lighter: #f8f8f8;
+
+
 @import "font-awesome";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap-slider";
+@import "animate";
 
 @import "components/tables";
 @import "components/slider";
+@import "components/footer";
+@import "components/navbar";
+@import "components/flash";
+
+
+body {
+  background-color: $gray-lighter;
+}
+
+main {
+  background-color: #fff;
+  padding-bottom: $line-height-computed;
+  min-height: 500px;
+
+  h1 {
+    font-size: 140%;
+    font-weight: bold;
+    color: $brand-primary;
+    background-color: $gray-lighter;
+    border-bottom: 1px solid darken($gray-lighter, 10%);
+    margin: 0;
+    margin-bottom: $line-height-computed * 1.5;
+    margin-left: -$grid-gutter-width;
+    margin-right: -$grid-gutter-width;
+    padding: $line-height-computed ($grid-gutter-width / 2);
+  }
+}
