@@ -53,6 +53,10 @@ main {
     margin-right: -$grid-gutter-width / 2;
     padding: $line-height-computed ($grid-gutter-width / 2);
 
+    > .title {
+
+    }
+
     > .actions {
     }
   }

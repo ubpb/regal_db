@@ -1,10 +1,17 @@
 table.table.table-striped.table-index-listing
+  tr
+    th(width=100) Segment-ID
+    th Signaturbereich
+    th
   - @segments.each do |segment|
     tr
       td = segment.identifier
       td = "#{segment.interval_begin} – #{segment.interval_end}"
       td.actions
-        = link_to edit_admin_segment_path(segment), class: "btn btn-default" do
-          = fa_icon("pencil")
-        =< link_to admin_segment_path(segment), method: :delete, data: {confirm: "Wirklich löschen?"}, class: "btn btn-danger" do
-          = fa_icon("trash")
+        .btn-group
+          button.btn.btn-default.dropdown-toggle(type="button" data-toggle="dropdown")
+            = fa_icon("cog")
+          ul.dropdown-menu.pull-right
+            li = link_to "Bearbeiten", edit_admin_segment_path(segment)
+            li.divider
+            li = link_to "Löschen", admin_segment_path(segment), method: :delete, data: {confirm: "Segment #{segment.identifier} mit allen Daten unwiederruflich löschen?"}

@@ -1,13 +1,22 @@
-h1 = "Segmente für Regal '#{@shelf.identifier}' für Standort '#{@shelf.location.identifier}'"
+h1
+  .title
+    = link_to("Standorte", admin_locations_path)
+    =<> ">"
+    = @location.display_name.presence || @location.identifier
+    =<> ">"
+    = link_to("Regale", admin_location_shelves_path(@location))
+    =<> ">"
+    = @shelf.identifier
+    =<> ">"
+    = "Segmente"
+  .actions
+    => link_to admin_location_shelves_path(@location), class: "btn btn-default" do
+      => fa_icon("reply")
+      = "Zurück"
 
-p
-  => link_to admin_location_shelves_path(@location), class: "btn btn-default" do
-    => fa_icon("reply")
-    = "Zurück"
-
-  = link_to new_admin_shelf_segment_path(@shelf), class: "btn btn-primary" do
-    => fa_icon("plus")
-    = "Neues Regalsegment anlegen"
+    = link_to new_admin_shelf_segment_path(@shelf), class: "btn btn-primary" do
+      => fa_icon("plus")
+      = "Neues Regalsegment anlegen"
 
 - if @segments.present?
   = render "listing"

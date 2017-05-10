@@ -5,19 +5,19 @@
       = f.input :interval_begin, autofocus: true
     .col-sm-6
       = f.input :interval_end
-  = f.input :utilisation
   .row
     .col-sm-6
       = f.input :width, collection: Segment::SHELF_WIDTHS
     .col-sm-6
       = f.input :no_of_levels, collection: Segment::NO_OF_LEVELS
+  = f.input :utilisation
 
   - if @segment.new_record?
     => f.submit "Speichern + Neu", name: :save_and_new, class: "btn btn-primary"
     => f.submit "Speichern + Zurück", class: "btn btn-default"
   - else
     => f.submit "Speichern", class: "btn btn-primary"
-  = link_to "Abbrechen", admin_shelf_segments_path(@segment.shelf), class: "btn btn-link"
+  = link_to "Abbrechen", admin_shelf_segments_path(@segment.shelf), class: "btn btn-default"
 
 javascript:
   $(function() {

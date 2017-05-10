@@ -38,6 +38,13 @@ class Admin::ShelvesController < Admin::ApplicationController
     end
   end
 
+  def destroy
+    @shelf = Shelf.find(params[:id])
+    @shelf.destroy
+    flash[:success] = "Regal erfolgreich gelöscht"
+    redirect_to(admin_location_shelves_path(@shelf.location))
+  end
+
 private
 
   def load_location

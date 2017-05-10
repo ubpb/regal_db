@@ -1,13 +1,18 @@
-h1 = "Regale für Standort '#{@location.identifier}'"
+h1
+  .title
+    = link_to("Standorte", admin_locations_path)
+    =<> ">"
+    = @location.display_name.presence || @location.identifier
+    =<> ">"
+    = "Regale"
+  .actions
+    => link_to admin_locations_path, class: "btn btn-default" do
+      => fa_icon("reply")
+      = "Zurück"
 
-p
-  => link_to admin_locations_path, class: "btn btn-default" do
-    => fa_icon("reply")
-    = "Zurück"
-
-  = link_to new_admin_location_shelf_path(@location), class: "btn btn-primary" do
-    => fa_icon("plus")
-    = "Neues Regal anlegen"
+    = link_to new_admin_location_shelf_path(@location), class: "btn btn-primary" do
+      => fa_icon("plus")
+      = "Neues Regal anlegen"
 
 - if @shelves.present?
   = render "listing"

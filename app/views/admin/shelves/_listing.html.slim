@@ -1,10 +1,18 @@
 table.table.table-striped.table-index-listing
+  tr
+    th(width=100) Regal-ID
+    th Signaturbereich
+    th
   - @shelves.each do |shelf|
     tr
       td = shelf.identifier
       td = shelf.segments.present? ? "#{shelf.interval_begin} - #{shelf.interval_end}" : "–"
       td.actions
-        => link_to admin_shelf_segments_path(shelf), class: "btn btn-default" do
-          = "Regalsegmente"
-        = link_to edit_admin_shelf_path(shelf), class: "btn btn-default" do
-          = fa_icon("pencil")
+        .btn-group
+          = link_to "Regalsegmente", admin_shelf_segments_path(shelf), class: "btn btn-default"
+          button.btn.btn-default.dropdown-toggle(type="button" data-toggle="dropdown")
+            = fa_icon("cog")
+          ul.dropdown-menu.pull-right
+            li = link_to "Bearbeiten", edit_admin_shelf_path(shelf)
+            li.divider
+            li = link_to "Löschen", admin_shelf_path(shelf), method: :delete, data: {confirm: "Regal #{shelf.identifier} mit allen Daten unwiederruflich löschen?"}
