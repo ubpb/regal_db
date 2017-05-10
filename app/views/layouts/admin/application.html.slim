@@ -15,9 +15,8 @@ html
     = render "layouts/admin/main_nav"
 
     main
-      .container
-        #global-flash
-          = render "layouts/admin/flash"
+      .container-fluid
+        #global-flash = render "layouts/admin/flash"
         = yield
 
     = render "layouts/admin/footer"

@@ -8,6 +8,8 @@ $navbar-default-color: #fff;
 $navbar-default-link-color: $navbar-default-color;
 $navbar-default-link-hover-color: darken($navbar-default-color, 10%);
 $navbar-default-link-active-color: $navbar-default-link-color;
+$navbar-default-toggle-hover-bg: darken($brand-primary, 10%);
+$navbar-default-toggle-icon-bar-bg: #fff;
 $gray-lighter: #f8f8f8;
 
 
@@ -34,6 +36,12 @@ main {
   min-height: 500px;
 
   h1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    line-height: 36px;
+
     font-size: 140%;
     font-weight: bold;
     color: $brand-primary;
@@ -41,8 +49,11 @@ main {
     border-bottom: 1px solid darken($gray-lighter, 10%);
     margin: 0;
     margin-bottom: $line-height-computed * 1.5;
-    margin-left: -$grid-gutter-width;
-    margin-right: -$grid-gutter-width;
+    margin-left: -$grid-gutter-width / 2;
+    margin-right: -$grid-gutter-width / 2;
     padding: $line-height-computed ($grid-gutter-width / 2);
+
+    > .actions {
+    }
   }
 }

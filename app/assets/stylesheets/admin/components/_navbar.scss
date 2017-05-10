@@ -5,3 +5,9 @@
 .navbar-brand {
   font-weight: bolder;
 }
+
+.navbar-default {
+  .navbar-toggle {
+    border: none;
+  }
+}

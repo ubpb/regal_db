@@ -1,9 +1,10 @@
-h1 Standorte
+h1
+  = "Standorte"
 
-p
-  = link_to new_admin_location_path, class: "btn btn-primary" do
-    => fa_icon("plus")
-    = "Neuen Standort anlegen"
+  .actions
+    => link_to new_admin_location_path, class: "btn btn-primary" do
+      => fa_icon("plus")
+      = "Neuen Standort anlegen"
 
 - if @locations.present?
   = render "listing"
