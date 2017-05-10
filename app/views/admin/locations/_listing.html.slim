@@ -1,10 +1,17 @@
 table.table.table-striped.table-index-listing
+  tr
+    th Standort-ID
+    th
   - @locations.each do |location|
     tr
       td = location.identifier
       td.actions
-        => link_to admin_location_shelves_path(location), class: "btn btn-default" do
-          = "Regale"
-        = link_to edit_admin_location_path(location), class: "btn btn-default" do
-          = fa_icon("pencil")
+        .btn-group
+          = link_to "Regale", admin_location_shelves_path(location), class: "btn btn-default"
+          button.btn.btn-default.dropdown-toggle(type="button" data-toggle="dropdown")
+            = fa_icon("cog")
+          ul.dropdown-menu.pull-right
+            li = link_to "Bearbeiten", edit_admin_location_path(location)
+            li.divider
+            li = link_to "Löschen", admin_location_path(location), method: :delete, data: {confirm: "Standort #{location.identifier} mit allen Daten unwiederruflich löschen?"}
 

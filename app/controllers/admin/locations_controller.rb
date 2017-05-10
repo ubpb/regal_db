@@ -32,6 +32,13 @@ class Admin::LocationsController < Admin::ApplicationController
     end
   end
 
+  def destroy
+    @location = Location.find(params[:id])
+    @location.destroy
+    flash[:success] = "Standort erfolgreich gelöscht"
+    redirect_to(admin_locations_path)
+  end
+
 private
 
   def location_params
