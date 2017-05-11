@@ -12,6 +12,14 @@
       = f.input :no_of_levels, collection: Segment::NO_OF_LEVELS
   = f.input :utilisation
 
+  /.row
+    .col-sm-10
+      = f.input :utilisation
+    .col-sm-2
+      .form-group
+        button#utilisation-assistent-btn.btn.btn-default.btn-block(style="margin-top: 18px")
+          = "Assistent"
+
   - if @segment.new_record?
     => f.submit "Speichern + Neu", name: :save_and_new, class: "btn btn-primary"
     => f.submit "Speichern + Zurück", class: "btn btn-default"
@@ -42,4 +50,11 @@ javascript:
         return Math.round(value * 100) + "%";
       }
     });
+
+    // $("#utilisation-assistent-btn").click(function(e) {
+    //   e.preventDefault();
+    //   return true;
+    // });
+
+    //var $("#segment_no_of_levels option:selected").text()
   });
