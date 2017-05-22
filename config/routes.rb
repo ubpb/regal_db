@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
+    get "/locate/*code", to: "shelf_finder#show", defaults: {format: :json}
     get "/exports/csv", to: "exports#csv", defaults: {format: :txt}
   end
 
