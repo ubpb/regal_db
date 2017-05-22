@@ -14,34 +14,6 @@ class Segment < ApplicationRecord
 
   auto_strip_attributes :interval_begin, :interval_end, upcase: true
 
-  before_save do
-    if self.interval_begin
-      self.interval_begin_computed = self.interval_begin.ljust(15, "0")
-    end
-
-    if self.interval_end
-      self.interval_end_computed = self.interval_end.ljust(15, "Z")
-    end
-  end
-
-  after_save do
-    self.shelf.recalculate_interval!
-  end
-
-  after_destroy do
-    self.shelf.recalculate_interval!
-  end
-
-
-  def map_id
-    "#r#{shelf.identifier}s#{identifier}"
-  end
-
-  def to_s
-    "Ebene #{shelf.location.identifier}: Regal #{shelf.identifier}, Segment #{identifier}"
-  end
-
-
   def total_width
     no_of_levels * width
   end

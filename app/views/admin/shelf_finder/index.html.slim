@@ -5,10 +5,22 @@ h1 Regal finden
   = f.submit "Suchen", class: "btn btn-primary"
 
 - if @search_string.present?
-  h3 Sie finden das gesuchte Medium in den folgenden Regalbereichen
   - if @result.present?
-    .alert.alert-success = simple_format(@result.to_s)
-    = render "map"
+    h3 Sie finden das gesuchte Medium in den folgenden Regalbereichen
+
+    - @result.locations.each do |l|
+      .alert.alert-success
+        = l.display_name.present? ? l.display_name : "Ebene #{l.identifier}"
+        ul
+          - l.shelves.each do |shelf|
+            li
+              =< "Regal Nr. #{shelf.identifier}"
+              - segments_ids = shelf.segments.map(&:identifier)
+              - label = segments_ids.count > 1 ? "Segmente" : "Segment"
+              =< ", #{label}: #{segments_ids.join(', ')}"
+
+    /.alert.alert-success = simple_format(@result.to_s)
+    /= render "map"
   - else
     .alert.alert-danger = "Leider kein Standort gefunden"
 

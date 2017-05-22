@@ -1,6 +1,10 @@
 <style type="text/css">
-  <% @result.segments.each do |segment| %>
-    <%= raw "#{segment.map_id} > rect {fill: red;}" %>
+  <% @result.locations.each do |location| %>
+    <% location.shelves.each do |shelf| %>
+      <% shelf.segments.each do |segment| %>
+        <%= raw "r#{shelf.identifier}s#{segment.identifier} > rect {fill: red;}" %>
+      <% end %>
+    <% end %>
   <% end %>
 </style>
 
