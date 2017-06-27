@@ -12,6 +12,10 @@ html
     = javascript_include_tag("admin/application", "data-turbolinks-track" => true)
 
   body
+    - if ENV["TEST_SERVER_WARNING"] == "true"
+      #test-server-warning
+        ' Achtung Testsystem! Hier keine Bestandsänderungen eintragen! Bestandsänderungen nur im Produktionssystem eintragen!
+
     = render "layouts/admin/main_nav"
 
     main
