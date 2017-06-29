@@ -1,7 +1,7 @@
 lock "~> 3.6"
 
 set :application, "regal_db"
-set :repo_url,    "git@github.com:ubpb/shelf_finder.git"
+set :repo_url,    "git@github.com:ubpb/regal_db.git"
 set :branch,      "master"
 set :log_level,   :debug
 
