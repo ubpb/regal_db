@@ -10,33 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170511113449) do
+ActiveRecord::Schema.define(version: 20170829150639) do
 
-  create_table "locations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "identifier",   null: false
-    t.string  "display_name"
-    t.index ["identifier"], name: "index_locations_on_identifier", unique: true, using: :btree
+  create_table "locations", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "identifier", null: false
+    t.string "display_name"
+    t.boolean "closed_stack"
+    t.index ["identifier"], name: "index_locations_on_identifier", unique: true
   end
 
-  create_table "segments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "shelf_id",                                null: false
-    t.integer "identifier",                              null: false
-    t.string  "interval_begin",                          null: false
-    t.string  "interval_end",                            null: false
-    t.float   "utilisation",    limit: 24, default: 0.0, null: false
-    t.integer "width",                     default: 100, null: false
+  create_table "segments", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "shelf_id", null: false
+    t.integer "identifier", null: false
+    t.string "interval_begin", null: false
+    t.string "interval_end", null: false
+    t.float "utilisation", limit: 24, default: 0.0, null: false
+    t.integer "width", default: 100, null: false
     t.integer "no_of_levels"
-    t.index ["identifier", "shelf_id"], name: "index_segments_on_identifier_and_shelf_id", unique: true, using: :btree
-    t.index ["interval_begin"], name: "index_segments_on_interval_begin", using: :btree
-    t.index ["interval_end"], name: "index_segments_on_interval_end", using: :btree
-    t.index ["shelf_id"], name: "index_segments_on_shelf_id", using: :btree
+    t.index ["identifier", "shelf_id"], name: "index_segments_on_identifier_and_shelf_id", unique: true
+    t.index ["interval_begin"], name: "index_segments_on_interval_begin"
+    t.index ["interval_end"], name: "index_segments_on_interval_end"
+    t.index ["shelf_id"], name: "index_segments_on_shelf_id"
   end
 
-  create_table "shelves", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "shelves", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "location_id", null: false
-    t.integer "identifier",  null: false
-    t.index ["identifier", "location_id"], name: "index_shelves_on_identifier_and_location_id", unique: true, using: :btree
-    t.index ["location_id"], name: "index_shelves_on_location_id", using: :btree
+    t.integer "identifier", null: false
+    t.index ["identifier", "location_id"], name: "index_shelves_on_identifier_and_location_id", unique: true
+    t.index ["location_id"], name: "index_shelves_on_location_id"
   end
 
   add_foreign_key "segments", "shelves"

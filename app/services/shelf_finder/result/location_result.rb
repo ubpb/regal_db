@@ -3,11 +3,13 @@ class ShelfFinder::Result
   class LocationResult < BaseResult
     attr_reader :identifier
     attr_reader :display_name
+    attr_reader :closed_stack
     attr_reader :shelves
 
-    def initialize(identifier, display_name)
-      @identifier   = identifier
-      @display_name = display_name
+    def initialize(location)
+      @identifier   = location.identifier
+      @display_name = location.display_name
+      @closed_stack = location.closed_stack?
       @shelves      = []
     end
 

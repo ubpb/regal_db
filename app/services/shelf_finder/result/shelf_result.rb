@@ -4,8 +4,8 @@ class ShelfFinder::Result
     attr_reader :identifier
     attr_reader :segments
 
-    def initialize(identifier)
-      @identifier = identifier
+    def initialize(shelf)
+      @identifier = shelf.identifier
       @segments   = []
     end
 
