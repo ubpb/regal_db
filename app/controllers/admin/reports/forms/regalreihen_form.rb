@@ -10,8 +10,8 @@ class Admin::Reports::Forms::RegalreihenForm
   attribute :end_row, Integer
 
   validates :location_id, presence: true
-  validates :start_row, presence: true
-  validates :end_row, presence: true
+  validates :start_row, numericality: {only_integer: true, greater_than: 0, allow_blank: true}
+  validates :end_row, numericality: {only_integer: true, greater_than: 0, allow_blank: true}
 
   def persisted?
     false
