@@ -13,6 +13,10 @@ class Admin::Reports::SystemstellenController < Admin::Reports::ApplicationContr
       ).order(
         "locations.identifier, shelves.identifier, segments.identifier"
       )
+
+      if @form.ignore_closed_stack?
+        @segments = @segments.reject{|s| s.shelf.location.closed_stack?}
+      end
     end
 
     render :index
@@ -21,7 +25,7 @@ class Admin::Reports::SystemstellenController < Admin::Reports::ApplicationContr
 private
 
   def form_params
-    params.require(:form).permit(:start_interval, :end_interval)
+    params.require(:form).permit(:start_interval, :end_interval, :ignore_closed_stack)
   end
 
 end
