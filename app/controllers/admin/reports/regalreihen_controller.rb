@@ -8,9 +8,20 @@ class Admin::Reports::RegalreihenController < Admin::Reports::ApplicationControl
     @form = Admin::Reports::Forms::RegalreihenForm.new(form_params)
 
     if @form.valid?
-      @shelves = Shelf.includes(:segments)
-                      .where(location: Location.find_by(identifier: @form.location_id))
-                      .where(identifier: @form.start_row..@form.end_row) #.first.total_width
+      location = Location.find(@form.location_id)
+
+      @form.start_row = 1 if @form.start_row.blank?
+      @form.end_row = location.shelves.count if @form.end_row.blank?
+
+      @shelves = Shelf.includes(
+        :segments
+      ).where(
+        location: location
+      ).where(
+        identifier: @form.start_row..@form.end_row
+      ).order(
+        "identifier"
+      )
     end
 
     render :index
