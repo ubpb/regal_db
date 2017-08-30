@@ -14,7 +14,7 @@ h1 Report: Systemstellen
 
   table.table.table-striped
     tr
-      th Ebene
+      th Standort
       th Regal
       th Segment
       th Systemstellen
@@ -29,7 +29,7 @@ h1 Report: Systemstellen
 
     - @segments.each do |segment|
       tr
-        td = segment.shelf.location.identifier
+        td = segment.shelf.location.display_name
         td = segment.shelf.identifier
         td = segment.identifier
         td = "#{segment.interval_begin} – #{segment.interval_end}"
