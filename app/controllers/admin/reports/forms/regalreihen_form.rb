@@ -1,5 +1,5 @@
 class Admin::Reports::Forms::RegalreihenForm
-  include Virtus.model
+  include Virtus.model(nullify_blank: true)
 
   extend ActiveModel::Naming
   include ActiveModel::Conversion
