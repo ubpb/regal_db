@@ -8,8 +8,11 @@ class Admin::Reports::SystemstellenController < Admin::Reports::ApplicationContr
     @form = Admin::Reports::Forms::SystemstellenForm.new(form_params)
 
     if @form.valid?
-      @segments = Segment.includes(:shelf => :location)
-                         .where("interval_begin >= ? AND interval_end <= ?", @form.start_interval, @form.end_interval)
+      @segments = ShelfFinder.new.find_segments(
+        @form.start_interval, @form.end_interval
+      ).order(
+        "locations.identifier, shelves.identifier, segments.identifier"
+      )
     end
 
     render :index
