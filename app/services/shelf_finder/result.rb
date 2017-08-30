@@ -25,8 +25,4 @@ class ShelfFinder::Result
     @locations.present?
   end
 
-  def segments
-    @locations.map(&:shelves).flatten.map(&:segments).flatten
-  end
-
 end
