@@ -8,7 +8,7 @@ h1 Report: Regalreihen
       = f.input :start_row
     .col-md-4
       = f.input :end_row
-  = f.submit "Report", class: "btn btn-default"
+  = f.submit "Report", class: "btn btn-primary"
 
 - if @shelves
   h2 Ergebnisse
@@ -26,7 +26,7 @@ h1 Report: Regalreihen
       tr
         td = shelf.identifier
         - if shelf.segments.count > 0
-          td = "#{shelf.interval_begin} – #{shelf.interval_end}"
+          td = "#{shelf.first_segment_display_name} – #{shelf.last_segment_display_name}"
           td = shelf.segments.count
           td = "#{(shelf.total_width / 100).round(2)} m"
           td = "#{(shelf.utilized_width / 100).round(2)} m"
