@@ -8,6 +8,7 @@ class Admin::Reports::Forms::SystemstellenForm
   attribute :start_interval, Integer
   attribute :end_interval, Integer
   attribute :ignore_closed_stack, Boolean
+  attribute :only_closed_stack, Boolean
 
   validates :start_interval, presence: true
   validates :end_interval, presence: true

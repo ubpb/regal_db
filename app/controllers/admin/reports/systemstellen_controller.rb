@@ -17,6 +17,10 @@ class Admin::Reports::SystemstellenController < Admin::Reports::ApplicationContr
       if @form.ignore_closed_stack?
         @segments = @segments.reject{|s| s.shelf.location.closed_stack?}
       end
+
+      if @form.only_closed_stack?
+        @segments = @segments.reject{|s| !s.shelf.location.closed_stack?}
+      end
     end
 
     render :index
@@ -25,7 +29,7 @@ class Admin::Reports::SystemstellenController < Admin::Reports::ApplicationContr
 private
 
   def form_params
-    params.require(:form).permit(:start_interval, :end_interval, :ignore_closed_stack)
+    params.require(:form).permit(:start_interval, :end_interval, :ignore_closed_stack, :only_closed_stack)
   end
 
 end
