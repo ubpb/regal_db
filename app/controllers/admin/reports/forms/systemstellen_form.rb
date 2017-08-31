@@ -11,6 +11,11 @@ class Admin::Reports::Forms::SystemstellenForm
 
   validates :start_interval, presence: true
   validates :end_interval, presence: true
+  validate -> do
+    if start_interval.present? && end_interval.present? && end_interval < start_interval
+      errors.add(:end_interval, "Muss lexikografisch größer oder gleich dem start Interval sein")
+    end
+  end
 
   def persisted?
     false
