@@ -11,7 +11,7 @@ class ShelfFinder
     Segment.includes(
       :shelf => :location
     ).where(
-      "interval_begin <= :code_begin AND interval_end >= :code_end",
+      "interval_begin <= :code_end AND :code_begin <= interval_end",
       code_begin: normalize_code(code_begin),
       code_end: normalize_code(code_end)
     )
