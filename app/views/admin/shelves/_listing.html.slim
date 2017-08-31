@@ -6,7 +6,7 @@ table.table.table-striped.table-index-listing
   - @shelves.each do |shelf|
     tr
       td = shelf.identifier
-      td = shelf.segments.present? ? "#{shelf.interval_begin} - #{shelf.interval_end}" : "–"
+      td = shelf.segments.present? ? "#{shelf.first_segment_display_name} - #{shelf.last_segment_display_name}" : "–"
       td.actions
         .btn-group
           = link_to "Regalsegmente", admin_shelf_segments_path(shelf), class: "btn btn-default"

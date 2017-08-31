@@ -9,10 +9,20 @@ class Segment < ApplicationRecord
   validates :utilisation, presence: true, numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 1}
   validates :width, presence: true, numericality: {greater_than: 0, only_integer: true}
   validates :no_of_levels, presence: true, numericality: {greater_than: 0, only_integer: true}
-  validates :interval_begin, presence: true
-  validates :interval_end, presence: true
+  validate  -> do
+    errors.add(:interval_end, I18n.t('errors.messages.blank')) if interval_begin.present? && interval_end.blank?
+    errors.add(:interval_begin, I18n.t('errors.messages.blank')) if interval_begin.blank? && interval_end.present?
+  end
 
   auto_strip_attributes :interval_begin, :interval_end, upcase: true
+
+  def interval_begin_display_name
+    interval_begin || "Leer"
+  end
+
+  def interval_end_display_name
+    interval_end || "Leer"
+  end
 
   def total_width
     no_of_levels * width

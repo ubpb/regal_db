@@ -6,12 +6,12 @@ class Shelf < ApplicationRecord
   validates :identifier, presence: true, numericality: {greater_than: 0, only_integer: true}, uniqueness: {scope: :location}
   validates :location, presence: true
 
-  def interval_begin
-    self.segments.first&.interval_begin
+  def first_segment_display_name
+    segments.first&.interval_begin_display_name
   end
 
-  def interval_end
-    self.segments.last&.interval_end
+  def last_segment_display_name
+    segments.last&.interval_end_display_name
   end
 
   def total_width
