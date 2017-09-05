@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170831091725) do
+ActiveRecord::Schema.define(version: 20170905065152) do
 
   create_table "locations", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "identifier", null: false
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20170831091725) do
     t.float "utilisation", limit: 24, default: 0.0, null: false
     t.integer "width", default: 100, null: false
     t.integer "no_of_levels"
+    t.text "notes"
     t.index ["identifier", "shelf_id"], name: "index_segments_on_identifier_and_shelf_id", unique: true
     t.index ["interval_begin"], name: "index_segments_on_interval_begin"
     t.index ["interval_end"], name: "index_segments_on_interval_end"

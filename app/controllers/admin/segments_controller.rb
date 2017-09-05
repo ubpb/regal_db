@@ -74,7 +74,7 @@ private
 
   def segment_params
     params.require(:segment).permit(
-      :identifier, :interval_begin, :interval_end, :utilisation, :width, :no_of_levels
+      :identifier, :interval_begin, :interval_end, :utilisation, :width, :no_of_levels, :notes
     )
   end
 

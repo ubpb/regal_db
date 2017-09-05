@@ -1,12 +1,14 @@
 table.table.table-striped.table-index-listing
   tr
     th(width=100) Segment-ID
-    th Signaturbereich
+    th(width=150) Signaturbereich
+    th Notizen
     th
   - @segments.each do |segment|
     tr
       td = segment.identifier
       td = "#{segment.interval_begin} – #{segment.interval_end}"
+      td = segment.notes.presence || "–"
       td.actions
         .btn-group
           button.btn.btn-default.dropdown-toggle(type="button" data-toggle="dropdown")

@@ -14,7 +14,8 @@ class Api::ExportsController < Api::ApplicationController
         "segments.interval_end",
         "segments.no_of_levels",
         "segments.width",
-        "segments.utilisation"
+        "segments.utilisation",
+        "segments.notes"
       )
 
     csv_header = [
@@ -25,7 +26,8 @@ class Api::ExportsController < Api::ApplicationController
       "Interval End",
       "No of Levels",
       "Width",
-      "Utilisation"
+      "Utilisation",
+      "Notizen"
     ]
 
     @csv_data = []
