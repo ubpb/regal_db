@@ -17,11 +17,11 @@ class Segment < ApplicationRecord
   auto_strip_attributes :interval_begin, :interval_end, upcase: true
 
   def interval_begin_display_name
-    interval_begin || "Leer"
+    interval_begin || "n.n"
   end
 
   def interval_end_display_name
-    interval_end || "Leer"
+    interval_end || "n.n"
   end
 
   def total_width

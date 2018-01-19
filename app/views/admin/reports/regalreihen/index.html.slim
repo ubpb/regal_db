@@ -30,7 +30,7 @@ h1 Report: Regalreihen
           td = shelf.segments.count
           td = "#{(shelf.total_width / 100).round(2)} m"
           td = "#{(shelf.utilized_width / 100).round(2)} m"
-          td = "#{(shelf.utilized_width / shelf.total_width * 100).round(2)} %"
+          td = "#{shelf.utilisation.round(2)} %"
         - else
           td = "–"
           td = "–"

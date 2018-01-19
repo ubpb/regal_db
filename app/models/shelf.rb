@@ -15,11 +15,19 @@ class Shelf < ApplicationRecord
   end
 
   def total_width
-    segments.map(&:total_width).sum
+    segments&.map(&:total_width).sum || 0
   end
 
   def utilized_width
-    segments.map(&:utilized_width).sum
+    segments&.map(&:utilized_width).sum || 0
+  end
+
+  def utilisation
+    if total_width == 0 || utilized_width == 0
+      0
+    else
+      utilized_width / total_width * 100
+    end
   end
 
 end
