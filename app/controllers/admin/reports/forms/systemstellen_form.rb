@@ -5,16 +5,16 @@ class Admin::Reports::Forms::SystemstellenForm
   include ActiveModel::Conversion
   include ActiveModel::Validations
 
-  attribute :start_interval, Integer
-  attribute :end_interval, Integer
+  attribute :interval_begin, Integer
+  attribute :interval_end, Integer
   attribute :ignore_closed_stack, Boolean
   attribute :only_closed_stack, Boolean
 
-  validates :start_interval, presence: true
-  validates :end_interval, presence: true
+  validates :interval_begin, presence: true
+  validates :interval_end, presence: true
   validate -> do
-    if start_interval.present? && end_interval.present? && end_interval < start_interval
-      errors.add(:end_interval, "Muss lexikografisch größer oder gleich dem start Interval sein")
+    if interval_begin.present? && interval_end.present? && interval_end < interval_begin
+      errors.add(:interval_end, "Muss lexikografisch größer oder gleich dem start Interval sein")
     end
   end
 

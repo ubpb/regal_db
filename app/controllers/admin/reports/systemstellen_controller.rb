@@ -9,7 +9,7 @@ class Admin::Reports::SystemstellenController < Admin::Reports::ApplicationContr
 
     if @form.valid?
       @segments = ShelfFinder.new.find_segments(
-        @form.start_interval, @form.end_interval
+        @form.interval_begin, @form.interval_end
       ).order(
         "locations.identifier, shelves.identifier, segments.identifier"
       )
@@ -29,7 +29,7 @@ class Admin::Reports::SystemstellenController < Admin::Reports::ApplicationContr
 private
 
   def form_params
-    params.require(:form).permit(:start_interval, :end_interval, :ignore_closed_stack, :only_closed_stack)
+    params.require(:form).permit(:interval_begin, :interval_end, :ignore_closed_stack, :only_closed_stack)
   end
 
 end

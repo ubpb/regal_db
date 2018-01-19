@@ -28,7 +28,7 @@ class Segment < ApplicationRecord
     no_of_levels * width
   end
 
-  def utilized_width
+  def utilised_width
     total_width * utilisation
   end
 

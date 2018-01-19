@@ -29,7 +29,7 @@ h1 Report: Regalreihen
           td = "#{shelf.first_segment_display_name} – #{shelf.last_segment_display_name}"
           td = shelf.segments.count
           td = "#{(shelf.total_width / 100).round(2)} m"
-          td = "#{(shelf.utilized_width / 100).round(2)} m"
+          td = "#{(shelf.utilised_width / 100).round(2)} m"
           td = "#{shelf.utilisation.round(2)} %"
         - else
           td = "–"
@@ -43,6 +43,6 @@ h1 Report: Regalreihen
       th
       th = @shelves.map{|shelf| shelf.segments.count}.sum
       th = "#{(@shelves.map{|shelf| shelf.total_width}.sum / 100).round(2)} m"
-      th = "#{(@shelves.map{|shelf| shelf.utilized_width}.sum / 100).round(2)} m"
-      th = "#{(@shelves.map{|shelf| shelf.utilized_width}.sum / @shelves.map{|shelf| shelf.total_width}.sum * 100).round(2)} %"
+      th = "#{(@shelves.map{|shelf| shelf.utilised_width}.sum / 100).round(2)} m"
+      th = "#{(@shelves.map{|shelf| shelf.utilised_width}.sum / @shelves.map{|shelf| shelf.total_width}.sum * 100).round(2)} %"
 
