@@ -3,11 +3,10 @@ h1 Report: Systemstellen
 = simple_form_for @form, url: admin_reports_systemstellen_index_path, as: :form do |f|
   .row
     .col-md-6
-      = f.input :interval_begin
+      = f.input :interval_begin, label: "Systemstelle Start"
     .col-md-6
-      = f.input :interval_end
-  = f.input :ignore_closed_stack, as: :boolean
-  = f.input :only_closed_stack, as: :boolean
+      = f.input :interval_end, label: "Systemstelle Ende"
+  = f.input :include_closed_stack, as: :boolean
   = f.submit "Report", class: "btn btn-primary"
 
 - if @segments

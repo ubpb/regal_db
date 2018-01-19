@@ -5,10 +5,23 @@ class Segment < ApplicationRecord
 
   belongs_to :shelf
 
-  validates :identifier, presence: true, numericality: {greater_than: 0, only_integer: true}, uniqueness: {scope: :shelf}
-  validates :utilisation, presence: true, numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 1}
-  validates :width, presence: true, numericality: {greater_than: 0, only_integer: true}
-  validates :no_of_levels, presence: true, numericality: {greater_than: 0, only_integer: true}
+  validates :identifier,
+    presence: true,
+    numericality: {greater_than: 0, only_integer: true},
+    uniqueness: {scope: :shelf}
+
+  validates :utilisation,
+    presence: true,
+    numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 1}
+
+  validates :width,
+    presence: true,
+    numericality: {greater_than: 0, only_integer: true}
+
+  validates :no_of_levels,
+    presence: true,
+    numericality: {greater_than: 0, only_integer: true}
+
   validate  -> do
     errors.add(:interval_end, I18n.t('errors.messages.blank')) if interval_begin.present? && interval_end.blank?
     errors.add(:interval_begin, I18n.t('errors.messages.blank')) if interval_begin.blank? && interval_end.present?

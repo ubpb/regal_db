@@ -3,7 +3,11 @@ class Shelf < ApplicationRecord
   belongs_to :location
   has_many :segments, -> { order(:identifier) }, dependent: :destroy
 
-  validates :identifier, presence: true, numericality: {greater_than: 0, only_integer: true}, uniqueness: {scope: :location}
+  validates :identifier,
+    presence: true,
+    numericality: {greater_than: 0, only_integer: true},
+    uniqueness: {scope: :location}
+
   validates :location, presence: true
 
   def first_segment_display_name

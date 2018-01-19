@@ -9,18 +9,10 @@ class Admin::Reports::SystemstellenController < Admin::Reports::ApplicationContr
 
     if @form.valid?
       @segments = ShelfFinder.new.find_segments(
-        @form.interval_begin, @form.interval_end
-      ).order(
-        "locations.identifier, shelves.identifier, segments.identifier"
+        @form.interval_begin,
+        @form.interval_end,
+        include_closed_stack: @form.include_closed_stack?
       )
-
-      if @form.ignore_closed_stack?
-        @segments = @segments.reject{|s| s.shelf.location.closed_stack?}
-      end
-
-      if @form.only_closed_stack?
-        @segments = @segments.reject{|s| !s.shelf.location.closed_stack?}
-      end
     end
 
     render :index
@@ -29,7 +21,7 @@ class Admin::Reports::SystemstellenController < Admin::Reports::ApplicationContr
 private
 
   def form_params
-    params.require(:form).permit(:interval_begin, :interval_end, :ignore_closed_stack, :only_closed_stack)
+    params.require(:form).permit(:interval_begin, :interval_end, :include_closed_stack)
   end
 
 end

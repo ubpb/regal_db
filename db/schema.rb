@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170905065152) do
+ActiveRecord::Schema.define(version: 20180119121810) do
 
   create_table "locations", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "identifier", null: false
     t.string "display_name"
-    t.boolean "closed_stack"
+    t.boolean "closed_stack", default: false, null: false
     t.index ["identifier"], name: "index_locations_on_identifier", unique: true
   end
 

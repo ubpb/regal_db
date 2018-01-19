@@ -8,5 +8,6 @@ de:
         utilisation: "Belegung des Regals in %"
         width: "Breite"
         no_of_levels: "Anzahl Regalböden"
-        ignore_closed_stack: Magazinstandorte unterdrücken
-        only_closed_stack: Nur Magazinstandorte durchsuchen
+        include_closed_stack: Magazinstandorte hinzuziehen
+        display_name: Angezeigter Name
+        closed_stack: Magazinstandort

@@ -1,26 +1,26 @@
 h1 Regal finden
 
-= simple_form_for :search, url: admin_shelf_finder_path, method: :get do |f|
-  = f.input :q, label: false, placeholder: "Suche nach...", input_html: {value: @search_string}
+= simple_form_for @form, url: admin_shelf_finder_index_path, as: :form do |f|
+  = f.input :search_string, label: false, placeholder: "Suche nach..."
+  = f.input :include_closed_stack, as: :boolean
   = f.submit "Suchen", class: "btn btn-primary"
 
-- if @search_string.present?
-  - if @result.present?
-    h3 Sie finden das gesuchte Medium in den folgenden Regalbereichen
+- if @result.present?
+  h3 Sie finden das gesuchte Medium in den folgenden Regalbereichen
 
-    - @result.locations.each do |l|
-      .alert.alert-success
-        = l.display_name.present? ? l.display_name : "Ebene #{l.identifier}"
-        ul
-          - l.shelves.each do |shelf|
-            li
-              =< "Regal Nr. #{shelf.identifier}"
-              - segments_ids = shelf.segments.map(&:identifier)
-              - label = segments_ids.count > 1 ? "Segmente" : "Segment"
-              =< ", #{label}: #{segments_ids.join(', ')}"
+  - @result.locations.each do |l|
+    .alert.alert-success
+      = l.display_name.present? ? l.display_name : "Ebene #{l.identifier}"
+      ul
+        - l.shelves.each do |shelf|
+          li
+            =< "Regal Nr. #{shelf.identifier}"
+            - segments_ids = shelf.segments.map(&:identifier)
+            - label = segments_ids.count > 1 ? "Segmente" : "Segment"
+            =< ", #{label}: #{segments_ids.join(', ')}"
 
-    /.alert.alert-success = simple_format(@result.to_s)
-    /= render "map"
-  - else
-    .alert.alert-danger = "Leider kein Standort gefunden"
+  /.alert.alert-success = simple_format(@result.to_s)
+  /= render "map"
+- else
+  .alert.alert-danger = "Leider kein Standort gefunden"
 

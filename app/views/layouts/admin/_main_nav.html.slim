@@ -13,9 +13,9 @@ nav.navbar.navbar-default.navbar-static-top(role="navigation")
     #main-navbar-collapse.collapse.navbar-collapse
       ul.nav.navbar-nav
         li
-          a href="/admin/locations" Bestände verwalten
+          = link_to "Bestände verwalten", admin_locations_path
         li
-          a href="/admin/shelf-finder" Regal finden
+          = link_to "Regal finden", admin_shelf_finder_index_path
         li.dropdown
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports <span class="caret"></span></a>
           ul.dropdown-menu
