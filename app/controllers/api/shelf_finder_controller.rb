@@ -6,7 +6,7 @@ class Api::ShelfFinderController < Api::ApplicationController
     if result.present?
       render(json: result)
     else
-      render(nothing: true, status: 404)
+      head :not_found
     end
   end
 
