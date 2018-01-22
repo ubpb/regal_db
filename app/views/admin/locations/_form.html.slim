@@ -1,6 +1,7 @@
 = simple_form_for [:admin, @location] do |f|
   = f.input :identifier
   = f.input :display_name
+  = f.input :collection_codes, hint: "Liste von Standortkennziffern. Z.B. 08,12"
   = f.input :closed_stack
 
   => f.submit "Speichern", class: "btn btn-primary"

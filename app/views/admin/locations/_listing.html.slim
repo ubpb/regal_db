@@ -2,12 +2,14 @@ table.table.table-striped.table-index-listing
   tr
     th(width=100) Standort-ID
     th(width=100) Magazin?
+    th(width=100) Standortkennziffern
     th Name
     th
   - @locations.each do |location|
     tr
       td = location.identifier
       td = location.closed_stack? ? "Ja" : "Nein"
+      td = location.collection_codes.presence || "–"
       td = location.display_name || "–"
       td.actions
         .btn-group

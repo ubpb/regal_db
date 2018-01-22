@@ -42,7 +42,7 @@ class Admin::LocationsController < Admin::ApplicationController
 private
 
   def location_params
-    params.require(:location).permit(:identifier, :display_name, :closed_stack)
+    params.require(:location).permit(:identifier, :display_name, :collection_codes, :closed_stack)
   end
 
 end
