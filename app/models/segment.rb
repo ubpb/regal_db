@@ -2,6 +2,7 @@ class Segment < ApplicationRecord
 
   SHELF_WIDTHS = [50, 70, 75, 90, 100, 120]
   NO_OF_LEVELS = 1..10
+  SPECIAL_USAGES = ["Überformate", "Seminarapparate", "Neuerwerbungen", "Laufende Zeitschriften"]
 
   belongs_to :shelf
 
@@ -25,6 +26,8 @@ class Segment < ApplicationRecord
   validate  -> do
     errors.add(:interval_end, I18n.t('errors.messages.blank')) if interval_begin.present? && interval_end.blank?
     errors.add(:interval_begin, I18n.t('errors.messages.blank')) if interval_begin.blank? && interval_end.present?
+
+    errors.add(:special_usage, "Bei Sondernutzung darf keine Systemstelle vergeben werden") if special_usage.present? && (interval_begin.present? || interval_end.present?)
   end
 
   auto_strip_attributes :interval_begin, :interval_end, upcase: true

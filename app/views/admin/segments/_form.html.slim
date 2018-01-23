@@ -7,6 +7,9 @@
       = f.input :interval_end
   .row
     .col-sm-6
+      = f.input :special_usage, collection: Segment::SPECIAL_USAGES
+  .row
+    .col-sm-6
       = f.input :width, collection: Segment::SHELF_WIDTHS
     .col-sm-6
       = f.input :no_of_levels, collection: Segment::NO_OF_LEVELS

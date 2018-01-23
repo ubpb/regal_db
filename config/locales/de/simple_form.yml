@@ -12,3 +12,5 @@ de:
         display_name: Angezeigter Name
         closed_stack: Magazinstandort
         collection_codes: Standortkennziffern
+        special_usage: Sondernutzung
+        notes: Interne Notizen

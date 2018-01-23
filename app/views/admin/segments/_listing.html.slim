@@ -2,12 +2,14 @@ table.table.table-striped.table-index-listing
   tr
     th(width=100) Segment-ID
     th(width=150) Signaturbereich
+    th(width=150) Sondernutzung
     th Notizen
     th
   - @segments.each do |segment|
     tr
       td = segment.identifier
       td = "#{segment.interval_begin} – #{segment.interval_end}"
+      td = segment.special_usage.presence || "–"
       td = segment.notes.presence || "–"
       td.actions
         .btn-group
