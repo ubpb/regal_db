@@ -3,6 +3,7 @@
   = f.input :display_name
   = f.input :collection_codes, hint: "Liste von Standortkennziffern. Z.B. 08,12"
   = f.input :closed_stack
+  = f.input :notes
 
   => f.submit "Speichern", class: "btn btn-primary"
   = link_to "Abbrechen", admin_locations_path, class: "btn btn-default"

@@ -3,7 +3,8 @@ table.table.table-striped.table-index-listing
     th(width=100) Standort-ID
     th(width=100) Magazin?
     th(width=100) Standortkennziffern
-    th Name
+    th(width=100) Name
+    th Kommentar
     th
   - @locations.each do |location|
     tr
@@ -11,6 +12,7 @@ table.table.table-striped.table-index-listing
       td = location.closed_stack? ? "Ja" : "Nein"
       td = location.collection_codes.presence || "–"
       td = location.display_name || "–"
+      td = location.notes || "–"
       td.actions
         .btn-group
           = link_to "Regale", admin_location_shelves_path(location), class: "btn btn-default"

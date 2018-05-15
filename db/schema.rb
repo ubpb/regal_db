@@ -10,22 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180122184407) do
+ActiveRecord::Schema.define(version: 2018_05_15_153751) do
 
-  create_table "locations", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "locations", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "identifier", null: false
     t.string "display_name"
     t.boolean "closed_stack", default: false, null: false
     t.string "collection_codes"
+    t.text "notes"
     t.index ["identifier"], name: "index_locations_on_identifier", unique: true
   end
 
-  create_table "segments", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "segments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "shelf_id", null: false
     t.integer "identifier", null: false
     t.string "interval_begin"
     t.string "interval_end"
-    t.float "utilisation", limit: 24, default: 0.0, null: false
+    t.float "utilisation", default: 0.0, null: false
     t.integer "width", default: 100, null: false
     t.integer "no_of_levels"
     t.text "notes"
@@ -36,7 +37,7 @@ ActiveRecord::Schema.define(version: 20180122184407) do
     t.index ["shelf_id"], name: "index_segments_on_shelf_id"
   end
 
-  create_table "shelves", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "shelves", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "location_id", null: false
     t.integer "identifier", null: false
     t.index ["identifier", "location_id"], name: "index_shelves_on_identifier_and_location_id", unique: true
