@@ -17,16 +17,6 @@ set :rvm_ruby_version, IO.read(".ruby-version").strip
 
 set :rails_env, "production"
 
-namespace :deploy do
-  after :publishing, :restart_app do
-    on roles(:web) do
-      within release_path do
-        execute :touch, "tmp/restart.txt"
-      end
-    end
-  end
-end
-
 namespace :app do
   namespace :db do
     desc 'Pull db from remote server'
