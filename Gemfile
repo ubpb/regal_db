@@ -1,24 +1,28 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+ruby "2.5.1"
+
 gem "auto_strip_attributes", "~> 2.4.0"
 gem "bcrypt",                "~> 3.1.11"
-gem "bootsnap",              ">= 1.1.0", require: false
 gem "bootstrap-sass",        "~> 3.3.7"
 gem "font-awesome-rails",    "~> 4.7"
-gem "jbuilder",              "~> 2.7"
-gem "jquery-rails",          "~> 4.3.3"
-gem "mysql2",                "~> 0.5.1"
+gem "jbuilder",              "~> 2.5"
+gem "jquery-rails",          "~> 4.3"
+gem "mysql2",                ">= 0.4.4", "< 0.6.0"
 gem "puma",                  ">= 3.11"
 gem "rack-cors",             "~> 1.0.2"
-gem "rails",                 "~> 5.2.0"
+gem "rails",                 "~> 5.2.1"
 gem "rails-i18n",            "~> 5.1.1"
 gem "sass-rails",            "~> 5.0"
-gem "simple_form",           "~> 4.0.0"
-gem "slim",                  "~> 3.0.9"
-gem "turbolinks",            "~> 5.1"
+gem "sassc",                 ">= 1.11"
+gem "simple_form",           "~> 4.0.1"
+gem "slim",                  "~> 3.0"
+gem "turbolinks",            "~> 5"
 gem "uglifier",              ">= 4.1.0"
 gem "virtus",                "~> 1.0.5"
+
+gem "bootsnap", ">= 1.1.0", require: false
 
 group :development, :test do
   gem "pry-byebug", "~> 3.6", platform: :mri
@@ -26,10 +30,11 @@ group :development, :test do
 end
 
 group :development do
-  gem "capistrano",         "~> 3.10.2"
-  gem "capistrano-bundler", "~> 1.3.0"
-  gem "capistrano-rails",   "~> 1.3.0"
-  gem "capistrano-rvm",     "~> 0.1.2"
-  gem "listen",             ">= 3.0.5", "< 3.2"
-  gem "web-console",        ">= 3.3.0"
+  gem "capistrano",           "~> 3.11"
+  gem "capistrano-bundler",   "~> 1.3.0"
+  gem "capistrano-passenger", "~> 0.2.0"
+  gem "capistrano-rails",     "~> 1.4.0"
+  gem "capistrano-rvm",       "~> 0.1.2"
+  gem "listen",               ">= 3.0.5", "< 3.2"
+  gem "web-console",          "~> 3.5"
 end
