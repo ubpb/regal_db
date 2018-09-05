@@ -13,7 +13,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push(
 )
 
 set :rvm_type,         :user
-set :rvm_ruby_version, "default"
+set :rvm_ruby_version, IO.read(".ruby-version")
 
 set :rails_env, "production"
 

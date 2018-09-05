@@ -1,8 +1,6 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.5.1"
-
 gem "auto_strip_attributes", "~> 2.4.0"
 gem "bcrypt",                "~> 3.1.11"
 gem "bootstrap-sass",        "~> 3.3.7"
