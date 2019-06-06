@@ -1,2 +1,2 @@
 * linguist-vendored
-app/*.rb linguist-vendored=false
+*.rb linguist-vendored=false
