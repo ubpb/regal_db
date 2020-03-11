@@ -31,13 +31,18 @@ body {
 }
 
 #test-server-warning {
-  @extend .alert;
-  @extend .alert-danger;
-  margin: 0;
   text-align: center;
+  padding: 8px;
+  background: #E20009;
+  color: white;
   font-weight: bold;
-  text-transform: uppercase;
+
+  a {
+    color: white;
+    text-decoration: underline;
+  }
 }
+
 
 main {
   background-color: #fff;
