@@ -5,8 +5,8 @@ class Admin::Reports::Forms::SystemstellenForm
   include ActiveModel::Conversion
   include ActiveModel::Validations
 
-  attribute :interval_begin, Integer
-  attribute :interval_end, Integer
+  attribute :interval_begin, String
+  attribute :interval_end, String
   attribute :include_closed_stack, Boolean
 
   validates :interval_begin, presence: true
