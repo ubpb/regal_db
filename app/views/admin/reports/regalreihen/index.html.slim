@@ -28,9 +28,9 @@ h1 Report: Regalreihen
         - if shelf.segments.count > 0
           td = "#{shelf.first_segment_display_name} – #{shelf.last_segment_display_name}"
           td = shelf.segments.count
-          td = "#{(shelf.total_width / 100).round(2)} m"
-          td = "#{(shelf.utilised_width / 100).round(2)} m"
-          td = "#{shelf.utilisation.round(2)} %"
+          td = "#{number_with_precision(shelf.total_width.fdiv(100))} m"
+          td = "#{number_with_precision(shelf.utilised_width.fdiv(100))} m"
+          td = "#{number_with_precision(shelf.utilisation)} %"
         - else
           td = "–"
           td = "–"
