@@ -10,9 +10,9 @@ table.table.table-striped.table-index-listing
     tr
       td = shelf.identifier
       td = shelf.segments.present? ? "#{shelf.first_segment_display_name} - #{shelf.last_segment_display_name}" : "–"
-      td = "#{(shelf.total_width / 100).round(2)} m"
-      td = "#{(shelf.utilised_width / 100).round(2)} m"
-      td = "#{shelf.utilisation.round(2)} %"
+      td = "#{number_with_precision(shelf.total_width.fdiv(100))} m"
+      td = "#{number_with_precision(shelf.utilised_width.fdiv(100))} m"
+      td = "#{number_with_precision(shelf.utilisation)} %"
       td.actions
         .btn-group
           = link_to "Regalsegmente", admin_shelf_segments_path(shelf), class: "btn btn-default"
