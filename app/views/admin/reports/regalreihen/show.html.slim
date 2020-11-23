@@ -1,6 +1,6 @@
 h1 Report: Regalreihen
 
-= simple_form_for @form, url: admin_reports_regalreihen_index_path, as: :form do |f|
+= simple_form_for @form, url: admin_reports_regalreihen_path, as: :query do |f|
   .row
     .col-md-4
       = f.input :location_id, collection: Location.order("display_name")
@@ -12,6 +12,8 @@ h1 Report: Regalreihen
 
 - if @shelves
   h2 Ergebnisse
+
+  p = link_to "Download Excel", @download_path, class: "btn btn-primary"
 
   table.table.table-striped
     tr

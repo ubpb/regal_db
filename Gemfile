@@ -6,6 +6,8 @@ ruby IO.read(".ruby-version").strip
 gem "auto_strip_attributes", "~> 2.4.0"
 gem "bcrypt",                "~> 3.1.11"
 gem "bootstrap-sass",        "~> 3.4.1"
+gem "caxlsx",                "~> 3.0.1"
+gem "caxlsx_rails",          "~> 0.6.2"
 gem "font-awesome-rails",    "~> 4.7"
 gem "jbuilder",              "~> 2.5"
 gem "jquery-rails",          "~> 4.3"
