@@ -1,0 +1,49 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Systemstellen") do |sheet|
+  # Static headers
+  headers = [
+    "Standort",
+    "Regal",
+    "Segment",
+    "Systemstellen",
+    "Regalmeter (vorhanden)",
+    "Regalmeter (genutzt)",
+    "Auslastung"
+  ]
+
+  # Add header row
+  sheet.add_row(headers)
+
+  #
+  # Values
+  #
+  @segments.each do |segment|
+    values = [
+      segment.shelf.location.display_name,
+      segment.shelf.identifier,
+      segment.identifier,
+      "#{segment.interval_begin_display_name} – #{segment.interval_end_display_name}",
+      number_with_precision(segment.total_width.fdiv(100)),
+      number_with_precision(segment.utilised_width.fdiv(100)),
+      number_with_precision(segment.utilised_width / segment.total_width * 100)
+    ]
+
+    # Add values row
+    style = wb.styles.add_style(alignment: {wrap_text: true, vertical: :top})
+    sheet.add_row(values, style: style, types: :string)
+  end
+
+  # Make the first row a header
+  sheet.sheet_view.pane do |pane|
+    pane.top_left_cell = "A2"
+    pane.state = :frozen_split
+    pane.y_split = 1
+    pane.x_split = 0
+    pane.active_pane = :bottom_right
+  end
+
+end
+
+# To make it work in Numbers
+xlsx_package.use_shared_strings = true

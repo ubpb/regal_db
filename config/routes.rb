@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
     namespace :reports do
       resource :regalreihen, only: [:show, :create], controller: "regalreihen"
-      resources :systemstellen, only: [:index, :create]
+      resource :systemstellen, only: [:show, :create], controller: "systemstellen"
     end
 
     resources :shelf_finder, only: [:index, :create]
