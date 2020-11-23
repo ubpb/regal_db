@@ -1,0 +1,33 @@
+table.table.table-striped
+  tr
+    th Reihe
+    th Bereich
+    th Anzahl Segmente
+    th Regalmeter (vorhanden)
+    th Regalmeter (genutzt)
+    th Auslastung
+
+  - shelves.each do |shelf|
+    tr
+      td = shelf.identifier
+      - if shelf.segments.count > 0
+        td = "#{shelf.first_segment_display_name} – #{shelf.last_segment_display_name}"
+        td = shelf.segments.count
+        td = "#{number_with_precision(shelf.total_width.fdiv(100))} m"
+        td = "#{number_with_precision(shelf.utilised_width.fdiv(100))} m"
+        td = "#{number_with_precision(shelf.utilisation)} %"
+      - else
+        td = "–"
+        td = "–"
+        td = "–"
+        td = "–"
+        td = "–"
+
+  tr
+    th
+    th
+    th = shelves.map{|shelf| shelf.segments.count}.sum
+    th = "#{number_with_precision(shelves.map{|shelf| shelf.total_width}.sum.fdiv(100))} m"
+    th = "#{number_with_precision(shelves.map{|shelf| shelf.utilised_width}.sum.fdiv(100))} m"
+    th = "#{number_with_precision(shelves.map{|shelf| shelf.utilised_width}.sum / shelves.map{|shelf| shelf.total_width}.sum * 100)} %"
+

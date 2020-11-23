@@ -34,7 +34,7 @@ class Admin::Reports::RegalreihenController < Admin::Reports::ApplicationControl
 private
 
   def query_params
-    params[:query]&.permit(:location_id, :start_row, :end_row)
+    params[:query]&.permit(:location_id, :start_row, :end_row, :expand_segments)
   end
 
   def get_shelves(form)

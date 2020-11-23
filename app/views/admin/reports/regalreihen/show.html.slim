@@ -8,6 +8,9 @@ h1 Report: Regalreihen
       = f.input :start_row
     .col-md-4
       = f.input :end_row
+  .row
+    .col-md-12
+      = f.input :expand_segments, as: :boolean, label: "Segmente erweitern"
   = f.submit "Report", class: "btn btn-primary"
 
 - if @shelves
@@ -15,36 +18,8 @@ h1 Report: Regalreihen
 
   p = link_to "Download Excel", @download_path, class: "btn btn-primary"
 
-  table.table.table-striped
-    tr
-      th Reihe
-      th Bereich
-      th Anzahl Segmente
-      th Regalmeter (vorhanden)
-      th Regalmeter (genutzt)
-      th Auslastung
-
-    - @shelves.each do |shelf|
-      tr
-        td = shelf.identifier
-        - if shelf.segments.count > 0
-          td = "#{shelf.first_segment_display_name} – #{shelf.last_segment_display_name}"
-          td = shelf.segments.count
-          td = "#{number_with_precision(shelf.total_width.fdiv(100))} m"
-          td = "#{number_with_precision(shelf.utilised_width.fdiv(100))} m"
-          td = "#{number_with_precision(shelf.utilisation)} %"
-        - else
-          td = "–"
-          td = "–"
-          td = "–"
-          td = "–"
-          td = "–"
-
-    tr
-      th
-      th
-      th = @shelves.map{|shelf| shelf.segments.count}.sum
-      th = "#{(@shelves.map{|shelf| shelf.total_width}.sum / 100).round(2)} m"
-      th = "#{(@shelves.map{|shelf| shelf.utilised_width}.sum / 100).round(2)} m"
-      th = "#{(@shelves.map{|shelf| shelf.utilised_width}.sum / @shelves.map{|shelf| shelf.total_width}.sum * 100).round(2)} %"
-
+  - if @form.expand_segments
+    - segments = @shelves.map{|shelf| shelf.segments}.flatten(1)
+    = render "admin/reports/systemstellen/listing", segments: segments
+  - else
+    = render "listing", shelves: @shelves

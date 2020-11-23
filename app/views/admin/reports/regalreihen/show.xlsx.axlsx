@@ -1,46 +1,12 @@
 wb = xlsx_package.workbook
 
 wb.add_worksheet(name: "Regalreihen") do |sheet|
-  # Static headers
-  headers = [
-    "Reihe",
-    "Bereich",
-    "Anzahl Segmente",
-    "Regalmeter (vorhanden)",
-    "Regalmeter (genutzt)",
-    "Auslastung"
-  ]
-
-  # Add header row
-  sheet.add_row(headers)
-
-  #
-  # Values
-  #
-  @shelves.each do |shelf|
-    values = [
-      shelf.identifier,
-      shelf.segments.count > 0 ? "#{shelf.first_segment_display_name} – #{shelf.last_segment_display_name}" : "–",
-      shelf.segments.count > 0 ? shelf.segments.count : "–",
-      shelf.segments.count > 0 ? number_with_precision(shelf.total_width.fdiv(100)) : "0",
-      shelf.segments.count > 0 ? number_with_precision(shelf.utilised_width.fdiv(100)) : "0",
-      shelf.segments.count > 0 ? number_with_precision(shelf.utilisation) : "0"
-    ]
-
-    # Add values row
-    style = wb.styles.add_style(alignment: {wrap_text: true, vertical: :top})
-    sheet.add_row(values, style: style, types: :string)
+  if @form.expand_segments
+    segments = @shelves.map{|shelf| shelf.segments}.flatten(1)
+    render "admin/reports/systemstellen/listing", wb: wb, sheet: sheet, segments: segments
+  else
+    render "listing", wb: wb, sheet: sheet, shelves: @shelves
   end
-
-  # Make the first row a header
-  sheet.sheet_view.pane do |pane|
-    pane.top_left_cell = "A2"
-    pane.state = :frozen_split
-    pane.y_split = 1
-    pane.x_split = 0
-    pane.active_pane = :bottom_right
-  end
-
 end
 
 # To make it work in Numbers
