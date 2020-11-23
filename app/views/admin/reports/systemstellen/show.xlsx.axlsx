@@ -7,6 +7,8 @@ wb.add_worksheet(name: "Systemstellen") do |sheet|
     "Regal",
     "Segment",
     "Systemstellen",
+    "Breite",
+    "# Böden",
     "Regalmeter (vorhanden)",
     "Regalmeter (genutzt)",
     "Auslastung"
@@ -24,6 +26,8 @@ wb.add_worksheet(name: "Systemstellen") do |sheet|
       segment.shelf.identifier,
       segment.identifier,
       "#{segment.interval_begin_display_name} – #{segment.interval_end_display_name}",
+      number_with_precision(segment.width.fdiv(100)),
+      segment.no_of_levels,
       number_with_precision(segment.total_width.fdiv(100)),
       number_with_precision(segment.utilised_width.fdiv(100)),
       number_with_precision(segment.utilised_width / segment.total_width * 100)
