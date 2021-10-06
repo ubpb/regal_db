@@ -5,6 +5,7 @@ table.table.table-striped.table-index-listing
     th Regalmeter (vorhanden)
     th Regalmeter (genutzt)
     th Auslastung
+    th Letzte Änderung
     th
   - @shelves.each do |shelf|
     tr
@@ -13,6 +14,7 @@ table.table.table-striped.table-index-listing
       td = "#{number_with_precision(shelf.total_width.fdiv(100))} m"
       td = "#{number_with_precision(shelf.utilised_width.fdiv(100))} m"
       td = "#{number_with_precision(shelf.utilisation)} %"
+      td = shelf.updated_at ? l(shelf.updated_at, format: "%d.%m.%Y, %H:%M Uhr") : "–"
       td.actions
         .btn-group
           = link_to "Regalsegmente", admin_shelf_segments_path(shelf), class: "btn btn-default"
