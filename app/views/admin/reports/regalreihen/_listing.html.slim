@@ -6,6 +6,7 @@ table.table.table-striped
     th Regalmeter (vorhanden)
     th Regalmeter (genutzt)
     th Auslastung
+    th Letzte Änderung
 
   - shelves.each do |shelf|
     tr
@@ -16,7 +17,9 @@ table.table.table-striped
         td = "#{number_with_precision(shelf.total_width.fdiv(100))} m"
         td = "#{number_with_precision(shelf.utilised_width.fdiv(100))} m"
         td = "#{number_with_precision(shelf.utilisation)} %"
+        td = shelf.updated_at ? l(shelf.updated_at, format: "%d.%m.%Y, %H:%M Uhr") : "–"
       - else
+        td = "–"
         td = "–"
         td = "–"
         td = "–"
@@ -30,4 +33,5 @@ table.table.table-striped
     th = "#{number_with_precision(shelves.map{|shelf| shelf.total_width}.sum.fdiv(100))} m"
     th = "#{number_with_precision(shelves.map{|shelf| shelf.utilised_width}.sum.fdiv(100))} m"
     th = "#{number_with_precision(shelves.map{|shelf| shelf.utilised_width}.sum / shelves.map{|shelf| shelf.total_width}.sum * 100)} %"
+    th
 

@@ -4,7 +4,7 @@ class Segment < ApplicationRecord
   NO_OF_LEVELS = 1..10
   SPECIAL_USAGES = ["Überformate", "Seminarapparate", "Neuerwerbungen", "Laufende Zeitschriften"]
 
-  belongs_to :shelf
+  belongs_to :shelf, touch: true
 
   validates :identifier,
     presence: true,

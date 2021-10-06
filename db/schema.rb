@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_14_072541) do
+ActiveRecord::Schema.define(version: 2021_10_06_111453) do
 
-  create_table "locations", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "locations", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.integer "identifier", null: false
     t.string "display_name"
     t.boolean "closed_stack", default: false, null: false
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2019_06_14_072541) do
     t.index ["identifier"], name: "index_locations_on_identifier", unique: true
   end
 
-  create_table "segments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "segments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.integer "shelf_id", null: false
     t.integer "identifier", null: false
     t.string "interval_begin"
@@ -31,15 +31,19 @@ ActiveRecord::Schema.define(version: 2019_06_14_072541) do
     t.integer "no_of_levels"
     t.text "notes"
     t.string "special_usage"
+    t.datetime "created_at", precision: 6
+    t.datetime "updated_at", precision: 6
     t.index ["identifier", "shelf_id"], name: "index_segments_on_identifier_and_shelf_id", unique: true
     t.index ["interval_begin"], name: "index_segments_on_interval_begin"
     t.index ["interval_end"], name: "index_segments_on_interval_end"
     t.index ["shelf_id"], name: "index_segments_on_shelf_id"
   end
 
-  create_table "shelves", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "shelves", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.integer "location_id", null: false
     t.integer "identifier", null: false
+    t.datetime "created_at", precision: 6
+    t.datetime "updated_at", precision: 6
     t.index ["identifier", "location_id"], name: "index_shelves_on_identifier_and_location_id", unique: true
     t.index ["location_id"], name: "index_shelves_on_location_id"
   end

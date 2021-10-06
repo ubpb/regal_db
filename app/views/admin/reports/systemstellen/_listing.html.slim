@@ -9,6 +9,7 @@ table.table.table-striped
     th Regalmeter (vorhanden)
     th Regalmeter (genutzt)
     th Auslastung
+    th Letzte Änderung
 
   - segments.each do |segment|
     tr
@@ -21,6 +22,7 @@ table.table.table-striped
       td = "#{number_with_precision(segment.total_width.fdiv(100))} m"
       td = "#{number_with_precision(segment.utilised_width.fdiv(100))} m"
       td = "#{number_with_precision(segment.utilised_width / segment.total_width * 100)} %"
+      td = segment.updated_at ? l(segment.updated_at, format: "%d.%m.%Y, %H:%M Uhr") : "–"
 
   tr
     th
@@ -32,3 +34,4 @@ table.table.table-striped
     th = "#{number_with_precision(a = (segments.map{|segment| segment.total_width}.sum.fdiv(100)))} m"
     th = "#{number_with_precision(b = (segments.map{|segment| segment.utilised_width}.sum.fdiv(100)))} m"
     th = "#{number_with_precision(b / a * 100)} %"
+    th
