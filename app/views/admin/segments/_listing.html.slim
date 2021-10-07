@@ -3,6 +3,7 @@ table.table.table-striped.table-index-listing
     th(width=100) Segment-ID
     th(width=150) Signaturbereich
     th(width=150) Sondernutzung
+    th(width=150) Auslastung
     th(width=180) Letzte Änderung
     th Notizen
     th
@@ -11,6 +12,7 @@ table.table.table-striped.table-index-listing
       td = segment.identifier
       td = "#{segment.interval_begin} – #{segment.interval_end}"
       td = segment.special_usage.presence || "–"
+      td = "#{number_with_precision(segment.utilisation * 100)} %"
       td = segment.updated_at ? l(segment.updated_at, format: "%d.%m.%Y, %H:%M Uhr") : "–"
       td = segment.notes.presence || "–"
       td.actions
