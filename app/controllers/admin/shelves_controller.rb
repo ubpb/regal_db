@@ -30,7 +30,7 @@ class Admin::ShelvesController < Admin::ApplicationController
 
   def update
     @shelf = Shelf.includes(:location).find(params[:id])
-    if @shelf.update_attributes(shelf_params)
+    if @shelf.update(shelf_params)
       flash[:success] = "Regal erfolgreich aktualisiert"
       redirect_to(admin_location_shelves_path(@shelf.location))
     else

@@ -24,7 +24,7 @@ class Admin::LocationsController < Admin::ApplicationController
 
   def update
     @location = Location.find(params[:id])
-    if @location.update_attributes(location_params)
+    if @location.update(location_params)
       flash[:success] = "Standort erfolgreich aktualisiert"
       redirect_to(admin_locations_path)
     else

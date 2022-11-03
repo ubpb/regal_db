@@ -47,7 +47,7 @@ class Admin::SegmentsController < Admin::ApplicationController
 
   def update
     @segment = Segment.includes(:shelf).find(params[:id])
-    if @segment.update_attributes(segment_params)
+    if @segment.update(segment_params)
       flash[:success] = "Regalsegment erfolgreich aktualisiert"
       redirect_to(admin_shelf_segments_path(@segment.shelf))
     else
