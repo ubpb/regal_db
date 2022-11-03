@@ -1,7 +1,7 @@
 class ShelfFinder
 
   def find(code, include_closed_stack: false)
-    collection_code = extract_collection_code(code)
+    code, collection_code = split_code_and_collection_code(code)
 
     segments = find_segments(
       code,
@@ -43,12 +43,17 @@ class ShelfFinder
 
 private
 
-  def extract_collection_code(code)
-    code.split("|")[1]
+  def split_code_and_collection_code(code)
+    code.split("|").map(&:strip).map(&:presence)
   end
 
   def normalize_code(code)
-    norm_code = code[/[a-z]{3,4}/i] || code
+    norm_code = if code.starts_with?(/\d\d/) # Journal "code"
+      code[/\d\d[a-z]{1}\d{1,2}/i] || code
+    else
+      code[/[a-z]{3,4}/i] || code
+    end
+
     norm_code&.upcase
   end
 
