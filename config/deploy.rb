@@ -1,16 +1,12 @@
-lock "~> 3.9"
+lock "~> 3.11"
 
 set :application, "regal_db"
 set :repo_url,    "git@github.com:ubpb/regal_db.git"
 set :branch,      "master"
 set :log_level,   :debug
 
-set :linked_files, fetch(:linked_files, []).push(
-  "config/database.yml", "config/secrets.yml"
-)
-set :linked_dirs, fetch(:linked_dirs, []).push(
-  "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system"
-)
+append :linked_files, "config/database.yml", "config/master.key"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 
 set :rvm_type,         :user
 set :rvm_ruby_version, IO.read(".ruby-version").strip
